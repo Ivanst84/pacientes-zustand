@@ -1,5 +1,6 @@
 
 import { useForm } from 'react-hook-form'
+import {toast}from 'react-toastify'
 import Error from './Error'
 import type { DraftPatient } from '../types'
 import { usePatientStore } from '../store'
@@ -32,7 +33,11 @@ export default function PatientForm() {
         }else{
 
             addPatient(data)
-          
+          toast.success('Paciente añadido',{
+                type:'success',
+                autoClose:2000
+            }
+          )
         }
         reset()
     }
