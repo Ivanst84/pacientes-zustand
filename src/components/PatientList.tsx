@@ -17,7 +17,7 @@ export default function PatientList() {
         {patients.map(patient=>(
           <PatientDetails 
           
-          key={patients.id}
+          key={patient.id}
           patient={patient}
           />
         ))}

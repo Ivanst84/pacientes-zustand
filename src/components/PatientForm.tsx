@@ -1,6 +1,6 @@
 
 import { useForm } from 'react-hook-form'
-import {toast}from 'react-toastify'
+import { toast } from 'react-toastify'
 import Error from './Error'
 import type { DraftPatient } from '../types'
 import { usePatientStore } from '../store'
@@ -14,17 +14,17 @@ export default function PatientForm() {
 
 
 
-    const { register, handleSubmit,setValue, formState: { errors }, reset } = useForm<DraftPatient>()
+    const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<DraftPatient>()
     useEffect(() => {
         if (activeId) {
             const activePatient = patient.filter(patient => patient.id === activeId)[0]
-                setValue('name',activePatient.name)
-                setValue('caretaker',activePatient.caretaker)
-                setValue('email',activePatient.email)
-                setValue('date',activePatient.date)
-                setValue('symptoms',activePatient.symptoms)
+            setValue('name', activePatient.name)
+            setValue('caretaker', activePatient.caretaker)
+            setValue('email', activePatient.email)
+            setValue('date', activePatient.date)
+            setValue('symptoms', activePatient.symptoms)
         }
-        }, [activeId])
+    }, [activeId])
 
     const registerPatient = (data: DraftPatient) => {
         if (activeId) {
@@ -34,14 +34,14 @@ export default function PatientForm() {
                 autoClose: 2000
             })
             return
-        }else{
+        } else {
 
             addPatient(data)
-          toast.success('Paciente añadido',{
-                type:'success',
-                autoClose:2000
+            toast.success('Paciente añadido', {
+                type: 'success',
+                autoClose: 2000
             }
-          )
+            )
         }
         reset()
     }
